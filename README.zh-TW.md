@@ -4,7 +4,7 @@
 
 > **僅支援 Windows。** 本專案是為 Windows 上的 Microsoft Word 設計，**不適用於 macOS、Word for Mac、Word Online、iOS 或 Android**。
 
-這是一組非官方的 Windows 工具，用來修正或自訂 Microsoft Word 中 MathType 公式的背景顏色。
+這是一組非官方的 Windows 工具，用來修正或自訂 Microsoft Word 中 MathType 公式的背景顏色。**完整 Ribbon 版即使電腦目前沒有安裝 MathType，也可以修改 Word 文件中既有 MathType 公式的背景顏色。**
 
 ## 可以解決哪些問題？
 
@@ -16,6 +16,7 @@
 - 想讓新插入的 MathType 公式自動固定成白底
 - 想在 Word 中修改 MathType 公式背景顏色
 - 想一次更新既有文件中大量 MathType 公式的背景
+- 電腦沒有安裝 MathType，但仍想修改 Word 文件中既有 MathType 公式的背景顏色
 - 切換 Word 佈景主題或頁面背景後，MathType 公式顯示不自然
 - 想解決 MathType 背景問題，但不希望程式持續掃描整份文件
 
@@ -26,7 +27,7 @@
 - **`wb_v0.0.65.cmd`**：完整 Ribbon 版，可選背景顏色、淺／中／深，點選 MathType 公式時自動套用目前顏色，並提供「更新所有」功能。
 - **`wb_no_v0.0.13.cmd`**：極簡無 Ribbon 版，新插入 MathType 公式時自動設為白色背景。
 
-> **相容性說明：****僅支援 Windows。** 本工具預期適用於 Windows 上的 Word 16.x，並大致可用於 MathType 6.9d 及其較接近的早期版本，只要 Word Ribbon／template 結構相容。其他 Windows 環境也可能可用，但實際相容性取決於 MathType 是否仍保留程式所需的 Ribbon callback 與 template 結構。
+> **相容性說明：****僅支援 Windows。** 如果只是要修改 **Word 文件中既有 MathType OLE 公式的背景**，完整 Ribbon 版**不需要電腦已安裝 MathType**。只有使用 MathType 本身的插入指令、並希望新插入的 Inline / Display / Right-numbered 公式自動處理時，才需要 MathType 與相容的 Word template／Ribbon callback。此類整合大致預期可用於 MathType 6.9d 及其較接近的早期版本。
 
 ## 為什麼需要這個工具？
 
@@ -89,6 +90,7 @@ MathType 完成後：
 | 無背景 | 無 | 有 |
 | 點選單一 MathType 公式時自動套目前顏色 | 無 | 有 |
 | 更新整份文件的公式背景 | 無 | 有 |
+| 未安裝 MathType 時仍可修改既有 MathType 公式背景 | 無 | 有 |
 | `WindowSelectionChange` | 無 | 有，且非常輕量 |
 | Timer / polling | 無 | 無 |
 | 持續掃描文件 | 無 | 無 |
@@ -123,7 +125,7 @@ MathType 完成後：
 
 只有按下「更新所有」時才會主動掃描目前文件中的 InlineShapes。
 
-如果找不到已驗證相容的 MathType Ribbon，完整版本可以將背景控制 Ribbon 以 standalone 方式安裝，不會強行修改未知結構的 MathType template。
+如果電腦沒有安裝 MathType，或找不到已驗證相容的 MathType Ribbon，完整版本仍可將背景控制 Ribbon 以 standalone 方式安裝。此時仍可以修改 Word 文件中既有 MathType OLE 公式的背景顏色；只是無法攔截 MathType 本身的公式插入指令，因此不具備「新插入公式後立即自動處理」這部分功能。
 
 ## 資源消耗
 
@@ -197,9 +199,10 @@ Restore 會在適用時恢復原始 MathType template，並移除 wb Word global
 - **僅支援 Windows**
 - Windows 10 / Windows 11
 - Word 16.x 系列（包括 Office 2021 / Microsoft 365 類型安裝）
-- MathType 6.9d 及其較接近的早期版本（Word Ribbon／template 結構需相容）
+- 完整 Ribbon 版若只是修改既有 MathType OLE 公式背景：**不需要安裝 MathType**
+- 若要自動處理新插入的 MathType 公式：大致預期適用於 MathType 6.9d 及其較接近的早期版本（Word Ribbon／template 結構需相容）
 
-其他 MathType 版本是否可用，主要取決於所需的 Ribbon callback 與 template 結構是否仍存在。
+其他 MathType 版本的相容性主要只影響 MathType 插入 hook 功能，取決於所需 Ribbon callback 與 template 結構是否仍存在。
 
 本專案**不支援 Word for Mac 或其他非 Windows 版本的 Word**。
 
