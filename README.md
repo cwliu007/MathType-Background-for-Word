@@ -2,14 +2,31 @@
 
 [繁體中文說明](README.zh-TW.md)
 
-Unofficial Windows utilities for automatically applying a background to MathType equations inserted in Microsoft Word.
+> **Windows only.** This project is designed for Microsoft Word on Windows. It is **not intended for macOS, Word for Mac, Word Online, iOS, or Android**.
+
+Unofficial Windows utilities for automatically fixing or customizing the background color of MathType equations in Microsoft Word.
+
+## Problems this solves
+
+This project is intended for people searching for solutions to MathType equation background problems in Microsoft Word, including:
+
+- MathType equation background does not match the Word page
+- MathType equations appear with an unwanted white box, gray background, black background, or other mismatched background
+- MathType formula background color changes unexpectedly
+- Need to force newly inserted MathType equations to a white background automatically
+- Need to change MathType equation background colors in Word
+- Need to update the background of many MathType equations in an existing document
+- MathType equations look wrong when switching Word themes or page background colors
+- Need a lightweight MathType background fix without continuous document scanning
+
+Search terms this project is relevant to include **MathType white background**, **MathType equation background color**, **MathType formula background**, **MathType white box in Word**, **MathType dark mode background**, and **Word MathType background fix**.
 
 This repository contains two variants that share the same lightweight insertion-hook design:
 
 - **`wb_v0.0.65.cmd`** — full Ribbon version with selectable colors, light/medium/dark shades, automatic recoloring of the selected MathType equation, and an Update All command.
 - **`wb_no_v0.0.13.cmd`** — minimal no-Ribbon version that automatically applies a white background to newly inserted MathType equations.
 
-> **Compatibility note:** the installers are intended for Word 16.x on Windows and are expected to work with MathType 6.9d and nearby earlier releases that retain a compatible Word Ribbon/template structure. Other configurations may also work, but compatibility depends on the available MathType Ribbon callbacks and template layout.
+> **Compatibility note:** **Windows only.** The installers are intended for Word 16.x on Windows and are expected to work with MathType 6.9d and nearby earlier releases that retain a compatible Word Ribbon/template structure. Other Windows configurations may also work, but compatibility depends on the available MathType Ribbon callbacks and template layout.
 
 ## Why this exists
 
@@ -160,11 +177,14 @@ The MathType Ribbon is modified only when its structure contains the verified ca
 
 Expected compatibility range:
 
+- **Windows only**
 - Windows 10 / Windows 11
 - Microsoft Word 16.x family (including Office 2021 / Microsoft 365 style installations)
 - MathType 6.9d and nearby earlier releases when the Word Ribbon/template structure is compatible
 
 Compatibility with other MathType releases depends on whether the expected Ribbon callbacks and template structure are present.
+
+This project does **not** support Word for Mac or other non-Windows versions of Word.
 
 ## Safety notes
 
