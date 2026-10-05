@@ -1,6 +1,6 @@
 # MathType Background for Microsoft Word
 
-[繁體中文說明](README.zh-TW.md)
+[中文說明](README.zh-TW.md)
 
 > **Windows only.** This project is designed for Microsoft Word on Windows. It is **not intended for macOS, Word for Mac, Word Online, iOS, or Android**.
 
