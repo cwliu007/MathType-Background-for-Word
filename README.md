@@ -1,0 +1,1 @@
+# MathType-Background-for-Word
