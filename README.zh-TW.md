@@ -2,14 +2,31 @@
 
 [English](README.md)
 
-這是一組非官方的 Windows 工具，用來讓 Microsoft Word 中新插入的 MathType 公式自動套用背景顏色。
+> **僅支援 Windows。** 本專案是為 Windows 上的 Microsoft Word 設計，**不適用於 macOS、Word for Mac、Word Online、iOS 或 Android**。
+
+這是一組非官方的 Windows 工具，用來修正或自訂 Microsoft Word 中 MathType 公式的背景顏色。
+
+## 可以解決哪些問題？
+
+如果你正在搜尋 Microsoft Word 裡 MathType 公式背景異常、白底、黑底、灰底或背景顏色不一致的解決方法，本工具可能適合這些情況：
+
+- MathType 公式背景和 Word 頁面顏色不一致
+- MathType 公式出現不想要的白色方塊、灰色背景、黑色背景或其他不一致背景
+- MathType 公式背景顏色突然改變
+- 想讓新插入的 MathType 公式自動固定成白底
+- 想在 Word 中修改 MathType 公式背景顏色
+- 想一次更新既有文件中大量 MathType 公式的背景
+- 切換 Word 佈景主題或頁面背景後，MathType 公式顯示不自然
+- 想解決 MathType 背景問題，但不希望程式持續掃描整份文件
+
+本專案特別對應常見搜尋詞，例如 **MathType 公式 白底**、**MathType 公式 背景顏色**、**MathType 公式 黑底**、**MathType 公式 白色方塊**、**Word MathType 背景**、**MathType dark mode 背景**。
 
 目前提供兩個版本，兩者共用相同的輕量化 MathType 插入 hook 核心：
 
 - **`wb_v0.0.65.cmd`**：完整 Ribbon 版，可選背景顏色、淺／中／深，點選 MathType 公式時自動套用目前顏色，並提供「更新所有」功能。
 - **`wb_no_v0.0.13.cmd`**：極簡無 Ribbon 版，新插入 MathType 公式時自動設為白色背景。
 
-> **相容性說明：**本工具預期適用於 Windows 上的 Word 16.x，並大致可用於 MathType 6.9d 及其較接近的早期版本，只要 Word Ribbon／template 結構相容。其他版本也可能可用，但實際相容性取決於 MathType 是否仍保留程式所需的 Ribbon callback 與 template 結構。
+> **相容性說明：****僅支援 Windows。** 本工具預期適用於 Windows 上的 Word 16.x，並大致可用於 MathType 6.9d 及其較接近的早期版本，只要 Word Ribbon／template 結構相容。其他 Windows 環境也可能可用，但實際相容性取決於 MathType 是否仍保留程式所需的 Ribbon callback 與 template 結構。
 
 ## 為什麼需要這個工具？
 
@@ -177,11 +194,14 @@ Restore 會在適用時恢復原始 MathType template，並移除 wb Word global
 
 預期相容範圍：
 
+- **僅支援 Windows**
 - Windows 10 / Windows 11
 - Word 16.x 系列（包括 Office 2021 / Microsoft 365 類型安裝）
 - MathType 6.9d 及其較接近的早期版本（Word Ribbon／template 結構需相容）
 
 其他 MathType 版本是否可用，主要取決於所需的 Ribbon callback 與 template 結構是否仍存在。
+
+本專案**不支援 Word for Mac 或其他非 Windows 版本的 Word**。
 
 ## 安全性注意事項
 
