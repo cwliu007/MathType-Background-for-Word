@@ -4,7 +4,7 @@
 
 > **Windows only.** This project is designed for Microsoft Word on Windows. It is **not intended for macOS, Word for Mac, Word Online, iOS, or Android**.
 
-Unofficial Windows utilities for automatically fixing or customizing the background color of MathType equations in Microsoft Word.
+Unofficial Windows utilities for fixing or customizing the background color of MathType equations in Microsoft Word. **The full Ribbon version can change the background color of existing MathType equations even when MathType itself is not installed on the computer.**
 
 ## Problems this solves
 
@@ -16,6 +16,7 @@ This project is intended for people searching for solutions to MathType equation
 - Need to force newly inserted MathType equations to a white background automatically
 - Need to change MathType equation background colors in Word
 - Need to update the background of many MathType equations in an existing document
+- Need to recolor existing MathType equations on a Windows PC where MathType is not installed
 - MathType equations look wrong when switching Word themes or page background colors
 - Need a lightweight MathType background fix without continuous document scanning
 
@@ -26,7 +27,7 @@ This repository contains two variants that share the same lightweight insertion-
 - **`wb_v0.0.65.cmd`** — full Ribbon version with selectable colors, light/medium/dark shades, automatic recoloring of the selected MathType equation, and an Update All command.
 - **`wb_no_v0.0.13.cmd`** — minimal no-Ribbon version that automatically applies a white background to newly inserted MathType equations.
 
-> **Compatibility note:** **Windows only.** The installers are intended for Word 16.x on Windows and are expected to work with MathType 6.9d and nearby earlier releases that retain a compatible Word Ribbon/template structure. Other Windows configurations may also work, but compatibility depends on the available MathType Ribbon callbacks and template layout.
+> **Compatibility note:** **Windows only.** For changing the background of **existing MathType OLE equations**, the full Ribbon version does **not require MathType to be installed**. MathType is only required for features that depend on MathType's own insertion commands, such as automatically processing newly inserted Inline / Display / Right-numbered equations. When that integration is used, the installers are expected to work with MathType 6.9d and nearby earlier releases that retain a compatible Word Ribbon/template structure.
 
 ## Why this exists
 
@@ -89,6 +90,7 @@ The local previous/current/next-paragraph search therefore covers these normal i
 | No Background option | No | Yes |
 | Auto-apply selected color when clicking one MathType equation | No | Yes |
 | Update all equations in the document | No | Yes |
+| Change existing MathType equation backgrounds without MathType installed | No | Yes |
 | `WindowSelectionChange` handler | No | Yes, lightweight |
 | Timer / polling | No | No |
 | Continuous document scanning | No | No |
@@ -116,7 +118,7 @@ This version adds an equation-background Ribbon UI with:
 
 Its `WindowSelectionChange` handler is intentionally lightweight. Ordinary text selections exit immediately; there is no timer, polling loop, paragraph scan, or document-wide scan in the selection handler.
 
-If no verified-compatible MathType Ribbon is found, the full version can install its background controls as a standalone Word Ribbon instead of modifying an unknown MathType template.
+If MathType is not installed, or if no verified-compatible MathType Ribbon is found, the full version can install its background controls as a standalone Word Ribbon. In that mode, it can still change the background color of existing MathType OLE equations already present in Word documents. What is unavailable without MathType is the automatic hook into MathType's own equation-insertion commands.
 
 ## Resource usage
 
@@ -180,9 +182,10 @@ Expected compatibility range:
 - **Windows only**
 - Windows 10 / Windows 11
 - Microsoft Word 16.x family (including Office 2021 / Microsoft 365 style installations)
-- MathType 6.9d and nearby earlier releases when the Word Ribbon/template structure is compatible
+- For editing backgrounds of existing MathType OLE equations with the full Ribbon version: **MathType does not need to be installed**
+- For automatic processing of newly inserted MathType equations: MathType 6.9d and nearby earlier releases are expected to work when the Word Ribbon/template structure is compatible
 
-Compatibility with other MathType releases depends on whether the expected Ribbon callbacks and template structure are present.
+Compatibility with other MathType releases matters only for the MathType insertion-hook features and depends on whether the expected Ribbon callbacks and template structure are present.
 
 This project does **not** support Word for Mac or other non-Windows versions of Word.
 
